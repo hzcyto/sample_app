@@ -45,11 +45,31 @@ group :development do
   gem 'web-console', '>= 3.3.0'
 end
 
-group :test do
-  # Adds support for Capybara system testing and selenium driver
-  gem 'capybara', '>= 2.15'
-  # Easy installation and use of chromedriver to run system tests with Chrome
-end
-
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+#for test report
+group :test do
+  # 必須
+  gem "minitest"
+  gem "minitest-rails"
+  gem "minitest-rails-capybara" # capybaraで結合テストできるようにする
+
+  # レポートの書式を変更する
+  gem 'minitest-reporters' # テスト結果の表示を整形
+
+  # 機能追加系
+  gem "minitest-stub_any_instance" # メソッドmockを追加できる様にする
+
+  gem "minitest-bang" # let!文のサポートを追加
+
+  gem "factory_bot" # DBのデータのモックを作成
+end
+
+
+
+#for test automaticly
+gem 'spring'
+
+#use color in Windows
+gem 'win32console'
